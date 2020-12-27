@@ -1,0 +1,6 @@
+{
+    "eslint.workingDirectories": ["./quiz/1_todo"],
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+      }
+}
