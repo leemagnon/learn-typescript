@@ -1,5 +1,5 @@
 {
-    "eslint.workingDirectories": ["./quiz/1_todo"],
+    "eslint.workingDirectories": [{"mode": "auto"}],
     "editor.codeActionsOnSave": {
         "source.fixAll.eslint": true
       }
