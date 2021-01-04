@@ -69,7 +69,7 @@ type UserProfileUpdate = {
     [p in UserProfileKeys]?: UserProfile[p];
 }
 
-// #4
+// #4 => Partial<T>
 type Subset<T> = {
     [p in keyof T]?: T[p];
 }

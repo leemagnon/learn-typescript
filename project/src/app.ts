@@ -1,3 +1,6 @@
+// JSDoc
+// @ts-check
+
 // utils
 function $(selector) {
   return document.querySelector(selector);
@@ -37,6 +40,13 @@ let isDeathLoading = false;
 let isRecoveredLoading = false;
 
 // api
+/**
+ * @typedef {object} CovidSummary
+ * @property {Array<object>} Country
+ */
+/**
+ * @returns {Promise<CovidSummary>}
+ */
 function fetchCovidSummary() {
   const url = 'https://api.covid19api.com/summary';
   return axios.get(url);
@@ -106,7 +116,8 @@ function setDeathsList(data) {
     span.textContent = value.Cases;
     span.setAttribute('class', 'deaths');
     const p = document.createElement('p');
-    p.textContent = new Date(value.Date).toLocaleDateString().slice(0, -1);
+    //p.textContent = new Date(value.Date).toLocaleDateString().slice(0, -1);
+    p.textContent = new Date(value.Date).toLocaleDateString('ko-KR').slice(0, -1);
     li.appendChild(span);
     li.appendChild(p);
     deathsList.appendChild(li);
@@ -132,7 +143,8 @@ function setRecoveredList(data) {
     span.textContent = value.Cases;
     span.setAttribute('class', 'recovered');
     const p = document.createElement('p');
-    p.textContent = new Date(value.Date).toLocaleDateString().slice(0, -1);
+    //p.textContent = new Date(value.Date).toLocaleDateString().slice(0, -1);
+    p.textContent = new Date(value.Date).toLocaleDateString('ko-KR').slice(0, -1);
     li.appendChild(span);
     li.appendChild(p);
     recoveredList.appendChild(li);
@@ -191,7 +203,8 @@ function setChartData(data) {
   const chartData = data.slice(-14).map(value => value.Cases);
   const chartLabel = data
     .slice(-14)
-    .map(value => new Date(value.Date).toLocaleDateString().slice(5, -1));
+    .map(value => new Date(value.Date).toLocaleDateString('ko-KR').slice(5, -1));
+    // new Date(value.Date).toLocaleDateString().slice(5, -1)
   renderChart(chartData, chartLabel);
 }
 
@@ -237,7 +250,7 @@ function setCountryRanksByConfirmedCases(data) {
 }
 
 function setLastUpdatedTimestamp(data) {
-  lastUpdatedTime.innerText = new Date(data.Date).toLocaleString();
+  lastUpdatedTime.innerText = new Date(data.Date).toLocaleString('ko-KR');
 }
 
 startApp();
