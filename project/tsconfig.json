@@ -4,6 +4,9 @@
         "target": "ES5",
         "outDir": "./built",
         "moduleResolution": "Node", // Promise 를 인식시키기 위한 옵션
+        "lib": ["ES2015", "DOM", "DOM.Iterable"], // 소스코드 레벨에서 DOM을 조작할 거면 "DOM"도 추가해주는 것이 좋다.
+        "noImplicitAny": true
     },
-    "include": ["./src/**/*"]
+    "include": ["./src/**/*"],
+    // "exclude": ["node_modules", "dist"] -> 기본 값으로 이미 설정 돼있음
 }
