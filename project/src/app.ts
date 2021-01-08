@@ -1,6 +1,8 @@
 // JSDoc
 // @ts-check
 
+import axios from 'axios';
+
 // utils
 function $(selector: string) {
   return document.querySelector(selector);
