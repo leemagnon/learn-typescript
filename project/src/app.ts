@@ -1,7 +1,8 @@
 // JSDoc
 // @ts-check
-
+// *.d.ts : 외부 자바스크립트 라이브러리를 타입스크립트로 가져와 타입을 지정할 수 있는 방법
 import axios from 'axios';
+import * as Chart from 'chart.js';
 
 // utils
 function $(selector: string) {
@@ -194,7 +195,8 @@ async function setupData() {
 }
 
 function renderChart(data: any, labels: any) {
-  const ctx = $('#lineChart').getContext('2d');
+  const lineChart = $('#lineChart') as HTMLCanvasElement;
+  const ctx = lineChart.getContext('2d');
   Chart.defaults.global.defaultFontColor = '#f5eaea';
   Chart.defaults.global.defaultFontFamily = 'Exo 2';
   new Chart(ctx, {
