@@ -1,8 +1,9 @@
 // JSDoc
 // @ts-check
 // *.d.ts : 외부 자바스크립트 라이브러리를 타입스크립트로 가져와 타입을 지정할 수 있는 방법
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
 import * as Chart from 'chart.js';
+import { CovidSummaryResponse, CountrySummaryResponse } from './covid/index';
 
 // utils
 function $(selector: string) {
@@ -50,10 +51,12 @@ const isRecoveredLoading = false;
 /**
  * @returns {Promise<CovidSummary>}
  */
-function fetchCovidSummary() {
+function fetchCovidSummary(): Promise<AxiosResponse<CovidSummaryResponse>> {
   const url = 'https://api.covid19api.com/summary';
   return axios.get(url);
 }
+
+fetchCovidSummary().then(res => res.data.Global.NewRecovered);
 
 enum CovidStatus {
   Confirmed = 'confirmed',
@@ -61,7 +64,10 @@ enum CovidStatus {
   Deaths = 'deaths',
 }
 
-function fetchCountryInfo(countryCode: string, status: CovidStatus) {
+function fetchCountryInfo(
+  countryCode: string,
+  status: CovidStatus
+): Promise<AxiosResponse<CountrySummaryResponse>> {
   // params: confirmed, recovered, deaths
   const url = `https://api.covid19api.com/country/${countryCode}/status/${status}`;
   return axios.get(url);
@@ -227,21 +233,21 @@ function setChartData(data: any) {
   renderChart(chartData, chartLabel);
 }
 
-function setTotalConfirmedNumber(data: any) {
+function setTotalConfirmedNumber(data: CovidSummaryResponse) {
   confirmedTotal.innerText = data.Countries.reduce(
     (total: any, current: any) => (total += current.TotalConfirmed),
     0
   );
 }
 
-function setTotalDeathsByWorld(data: any) {
+function setTotalDeathsByWorld(data: CovidSummaryResponse) {
   deathsTotal.innerText = data.Countries.reduce(
     (total: any, current: any) => (total += current.TotalDeaths),
     0
   );
 }
 
-function setTotalRecoveredByWorld(data: any) {
+function setTotalRecoveredByWorld(data: CovidSummaryResponse) {
   recoveredTotal.innerText = data.Countries.reduce(
     (total: any, current: any) => (total += current.TotalRecovered),
     0
