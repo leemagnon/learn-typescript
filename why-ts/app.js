@@ -36,7 +36,7 @@ function startApp() {
       //console.log(response);
       user = response.data;
       console.log(user.address);
-
+    
       // TODO: 이름, 이메일, 주소 표시하기
       username.innerText = user.name;
       email.innerText = user.email;
