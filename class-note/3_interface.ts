@@ -62,3 +62,20 @@ var p: Developer = {
     age: 25,
     name: "jeongmin"
 }
+
+/**
+ * 연습 
+ */
+ interface IInfo {
+    [key: string]: string | number | boolean | { rat: string; dog: string };
+}
+
+var info: IInfo = {
+    name: "leemagnon",
+    age: 25,
+    married: false,
+    pets: {
+        rat: "흰놈",
+        dog: "백호"
+    }
+}

@@ -9,7 +9,7 @@ function add(): number {
 }
 
 // 함수의 타입을 정의하는 방식
-function sum(a: number, b: number): number {
+function sum1(a: number, b: number): number {
     return a + b;
 }
 
@@ -17,6 +17,7 @@ function sum(a: number, b: number): number {
 function log(a: string, b?: string, c?: string) {
 
 }
+
 log('hello world');
 log('hello ts', 'abc');
 log('a', 'b', 'c', 'd');
