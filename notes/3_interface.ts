@@ -48,12 +48,12 @@ var obj: StringRegexDictionary = {
 Object.keys(obj).forEach(function(value) {});
 
 // 인터페이스 확장
-interface Person {
+interface IPerson {
     name: string;
     age: number;
 }
 
-interface Developer extends Person{
+interface Developer extends IPerson{
     language: string;
 }
 
@@ -64,13 +64,24 @@ var p: Developer = {
 }
 
 /**
- * 연습 
+ * 복습 
  */
- interface IInfo {
+
+interface IInfo {
     [key: string]: string | number | boolean | { rat: string; dog: string };
 }
 
-var info: IInfo = {
+interface IUser {
+    name: string;
+    age: number;
+    married: boolean;
+}
+
+interface IOwner extends IUser{
+    pets: { rat: string; dog: string }
+}
+
+var info: IOwner = {
     name: "leemagnon",
     age: 25,
     married: false,

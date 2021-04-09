@@ -8,13 +8,13 @@
 //     age: number;
 // }
 
-type Person = {
+type Person1 = {
     name: string;
     age: number;
 };
 
-var jeongmin: Person = {
-    name: '정민',
+var leemagnon: Person1 = {
+    name: '쥐돌이',
     age: 25
 }
 

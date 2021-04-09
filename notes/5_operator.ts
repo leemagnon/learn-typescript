@@ -1,5 +1,5 @@
 /* Union Type */
-var jeongmin: string | number | boolean;
+var leemagnon1: string | number | boolean;
 
 function logMessage(value: string | number) {
     if(typeof value === 'number') {
